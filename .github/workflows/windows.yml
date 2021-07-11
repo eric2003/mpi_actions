@@ -26,13 +26,24 @@ jobs:
           ls
           $psfile = "${{ github.workspace }}/.github/workflows/test.ps1"
           powershell $psfile
-      - name: CMake Build
+        - name: CMake Build
         run: |
           cd ${{ github.workspace }}
           ls
           mkdir build
           cd build
           cmake --version
-          cmake ../
+          cmake -DCMAKE_INSTALL_PREFIX=${{ github.workspace }} ../
           ls
-        shell: pwsh          
+        shell: pwsh
+      - name: CMake Install
+        env:
+          prefix: ${{ github.workspace }}
+        run: |
+          cd ${{ github.workspace }}/build
+          ls
+          cmake --build . --target INSTALL --config release
+          ls "${{env.prefix}}"
+          cd "${{env.prefix}}/bin"
+          ls
+          #./CMakePrj.exe
