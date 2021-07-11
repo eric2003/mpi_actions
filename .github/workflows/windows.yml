@@ -33,6 +33,10 @@ jobs:
           $a2 = [environment]::GetEnvironmentvariable("test2", "User")
           Write-Host "a2 = $a2"
           
+          [environment]::SetEnvironmentvariable("test3", "cfd-user", "User")
+          $a3 = [environment]::GetEnvironmentvariable("test3", "User")
+          Write-Host "a3 = $a3"
+          
           Write-Host "0000000000000000000000000"
           Write-Host "0: env:test..."
           Write-Host "0: $env:test..."
