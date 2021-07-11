@@ -30,14 +30,6 @@ jobs:
         shell: pwsh
       - name: CMake Build
         run: |
-          Write-Host "-----------CMake Build---------------------------"
-          $a4 = [environment]::GetEnvironmentvariable("path", [System.EnvironmentVariableTarget]::User)
-          Write-Host "CMake Build path user = $a4" 
-          Write-Host "+++++++++++++++++++++++++++++++++++++++++++++++++++" 
-          $a5 = [environment]::GetEnvironmentvariable("path", [System.EnvironmentVariableTarget]::Machine)
-          Write-Host "CMake Build path Machine = $a5" 
-          Write-Host "---------------------------------------------------" 
-          Write-Host "CMake Build Env:path = $Env:path" 
           cd ${{ github.workspace }}
           ls
           mkdir build
@@ -56,6 +48,7 @@ jobs:
           ls "${{env.prefix}}"
           cd "${{env.prefix}}/bin"
           ls
+          $Env:path = [environment]::GetEnvironmentvariable("path", [System.EnvironmentVariableTarget]::Machine)
           $Env:path = $Env:Path + ";${{ github.workspace }}/bin"          
           ./MPIActions.exe
           mpiexec -n 2 MPIActions.exe

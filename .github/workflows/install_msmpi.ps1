@@ -47,14 +47,8 @@ function InstallMSMPI() {
     
     $Env:Path = $Env:Path + ";$msmpi_bin_path"
 	
-	#[environment]::SetEnvironmentvariable("path", $Env:Path, "User")
-	#$a3 = [environment]::GetEnvironmentvariable("path", "User")
-	
 	[environment]::SetEnvironmentvariable("path", $Env:Path, [System.EnvironmentVariableTarget]::Machine)
-	$a3 = [environment]::GetEnvironmentvariable("path", [System.EnvironmentVariableTarget]::Machine)
-	
-	Write-Host "the path is = $a3"
-	
+
     Write-Host "ls $msmpi_sdk_path"
     ls $msmpi_sdk_path
     Write-Host "ls $msmpi_sdk_path"
