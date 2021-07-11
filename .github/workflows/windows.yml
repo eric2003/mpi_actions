@@ -46,4 +46,6 @@ jobs:
           ls "${{env.prefix}}"
           cd "${{env.prefix}}/bin"
           ls
+          $Env:path = $Env:Path + ";${{ github.workspace }}/bin"          
           ./MPIActions.exe
+          mpiexec -n 2 MPIActions.exe
