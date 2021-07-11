@@ -26,6 +26,13 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           ls
+          Write-Host "0000000000000000000000000"
+          Write-Host "0: env:test..."
+          Write-Host "0: $env:test..."
+          Write-Host "++++++++++++++++++++++++"
+          Write-Host "0: {{env.test}}..."
+          Write-Host "0: ${{env.test}}..."
+          Write-Host "0000000000000000000000000"
           $env:test = "aaa"
           Write-Host "1: $env:test..."
           $env:test
@@ -36,6 +43,10 @@ jobs:
         shell: pwsh
       - name: CMake Build
         run: |
+          Write-Host "CMake Build +++++++++++++++++++++++"
+          Write-Host "CMake Build : env:test..."
+          Write-Host "CMake Build : $env:test..."
+          Write-Host "CMake Build +++++++++++++++++++++++"
           cd ${{ github.workspace }}
           ls
           mkdir build
