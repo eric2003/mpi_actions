@@ -61,6 +61,8 @@ jobs:
       - name: CMake Build
         run: |
           Write-Host "-----------CMake Build---------------------------"
+          $a4 = [environment]::GetEnvironmentvariable("test3", "User")
+          Write-Host "CMake Build a4(cfd-user) = $a4"          
           Write-Host "mypath : $env:mypath"
           Write-Host "env:path : $env:path"
           Write-Host "------------CMake Build--------------------------"
