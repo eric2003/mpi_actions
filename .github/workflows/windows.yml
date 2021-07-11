@@ -31,9 +31,12 @@ jobs:
       - name: CMake Build
         run: |
           Write-Host "-----------CMake Build---------------------------"
-          $a4 = [environment]::GetEnvironmentvariable("path", "User")
-          Write-Host "CMake Build path = $a4" 
+          $a4 = [environment]::GetEnvironmentvariable("path", [System.EnvironmentVariableTarget]::User)
+          Write-Host "CMake Build path user = $a4" 
           Write-Host "+++++++++++++++++++++++++++++++++++++++++++++++++++" 
+          $a5 = [environment]::GetEnvironmentvariable("path", [System.EnvironmentVariableTarget]::Machine)
+          Write-Host "CMake Build path Machine = $a5" 
+          Write-Host "---------------------------------------------------" 
           Write-Host "CMake Build Env:path = $Env:path" 
           cd ${{ github.workspace }}
           ls
