@@ -17,6 +17,8 @@ on:
 jobs:
   build:
     name: "Windows OneFLOW MPI Run"
+    env:
+      test: "haha test"
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,8 +26,14 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           ls
+          $env:test = "aaa"
+          Write-Host "1: $env:test..."
+          $env:test
           $psfile = "${{ github.workspace }}/.github/workflows/install_msmpi.ps1"
-          powershell $psfile
+          & $psfile
+          Write-Host "2: $env:test..."
+          $Env:test
+        shell: pwsh
       - name: CMake Build
         run: |
           cd ${{ github.workspace }}
@@ -49,3 +57,4 @@ jobs:
           $Env:path = $Env:Path + ";${{ github.workspace }}/bin"          
           ./MPIActions.exe
           mpiexec -n 2 MPIActions.exe
+        shell: pwsh
