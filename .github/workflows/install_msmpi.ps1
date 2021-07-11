@@ -33,6 +33,8 @@ function main() {
 	Write-Host "main : $Env:test"
 	Write-Host "xxxxxxxxxxxxxxxxxxxxxxx"
 	$Env:mypath = $Env:path
+	$Env:path = $Env:path + ";c:/haha/"
+	Write-Host "main : Env:path = $Env:path"
     #InstallMSMPI
 }
 

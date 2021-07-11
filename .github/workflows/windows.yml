@@ -43,9 +43,16 @@ jobs:
           $Env:test
           
           Write-Host "mypath : $env:mypath"
+          Write-Host "--------------------------------------"
+          Write-Host "env:path : $env:path"
+          Write-Host "--------------------------------------"
         shell: pwsh
       - name: CMake Build
         run: |
+          Write-Host "-----------CMake Build---------------------------"
+          Write-Host "mypath : $env:mypath"
+          Write-Host "env:path : $env:path"
+          Write-Host "------------CMake Build--------------------------"
           Write-Host "CMake Build +++++++++++++++++++++++"
           Write-Host "CMake Build : env:test..."
           Write-Host "CMake Build : $env:test..."
