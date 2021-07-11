@@ -24,7 +24,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           ls
-          $psfile = "${{ github.workspace }}/.github/workflows/test.ps1"
+          $psfile = "${{ github.workspace }}/.github/workflows/install_msmpi.ps1"
           powershell $psfile
       - name: CMake Build
         run: |
@@ -46,4 +46,4 @@ jobs:
           ls "${{env.prefix}}"
           cd "${{env.prefix}}/bin"
           ls
-          #./CMakePrj.exe
+          ./MPIActions.exe

@@ -56,7 +56,7 @@ function InstallMSMPI() {
 }
 
 function main() {
-    test
+    #test
 	InstallMSMPI
 }
 
