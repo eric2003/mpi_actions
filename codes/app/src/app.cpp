@@ -22,12 +22,12 @@ int calc_pi( int argc, char ** argv )
 	double endTime = 0;
 	startTime = MPI_Wtime();
 
-	int n;
+	int n = 10000;
 	double ans = 0;
-	if(myid == 0){
-		cout << "Please input n: ";
-		cin >> n;
-	}
+	//if(myid == 0){
+	//	cout << "Please input n: ";
+	//	cin >> n;
+	//}
 	MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	double h = 1.0 / n;
 	double x;
