@@ -27,6 +27,11 @@ function main() {
 	Write-Host "------------------------"
 	Write-Host "main : $Env:test"
 	Write-Host "++++++++++++++++++++++++"
+	$Env:test = " bbb "
+	Write-Host "**********************"
+	Write-Host "main : Env:test"
+	Write-Host "main : $Env:test"
+	Write-Host "xxxxxxxxxxxxxxxxxxxxxxx"
     #InstallMSMPI
 }
 
