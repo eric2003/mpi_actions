@@ -19,6 +19,7 @@ jobs:
     name: "Windows OneFLOW MPI Run"
     env:
       test: "haha test"
+      mypath: ""
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -40,6 +41,8 @@ jobs:
           & $psfile
           Write-Host "2: $env:test..."
           $Env:test
+          
+          Write-Host "mypath : $env:mypath"
         shell: pwsh
       - name: CMake Build
         run: |
