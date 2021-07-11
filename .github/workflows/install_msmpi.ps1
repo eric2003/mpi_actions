@@ -46,8 +46,8 @@ function InstallMSMPI() {
     $msmpi_sdk_path = "C:/Program Files (x86)/Microsoft SDKs/MPI"
     
     $Env:Path = $Env:Path + ";$msmpi_bin_path"
-	
-	[environment]::SetEnvironmentvariable("path", $Env:Path, [System.EnvironmentVariableTarget]::Machine)
+    
+    [environment]::SetEnvironmentvariable("path", $Env:Path, [System.EnvironmentVariableTarget]::Machine)
 
     Write-Host "ls $msmpi_sdk_path"
     ls $msmpi_sdk_path
@@ -55,7 +55,7 @@ function InstallMSMPI() {
     ls $msmpi_bin_path
     
     Write-Host "mpiexec"
-    mpiexec	
+    mpiexec 
 }
 
 function main() {

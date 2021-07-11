@@ -52,4 +52,5 @@ jobs:
           $Env:path = $Env:Path + ";${{ github.workspace }}/bin"          
           ./MPIActions.exe
           mpiexec -n 2 MPIActions.exe
+          mpiexec -n 64 MPIActions.exe
         shell: pwsh
