@@ -57,10 +57,10 @@ function InstallMSMPI() {
 
 function main() {
     #test
-	Write-Host "print $Env:test in main"
-	$Env:test
+	Write-Host "------------------------"
+	Write-Host "main : $Env:test"
 	Write-Host "++++++++++++++++++++++++"
-    InstallMSMPI
+    #InstallMSMPI
 }
 
 main
