@@ -27,6 +27,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           ls
+          [environment]::GetEnvironmentvariable("test", "User")
           Write-Host "0000000000000000000000000"
           Write-Host "0: env:test..."
           Write-Host "0: $env:test..."
