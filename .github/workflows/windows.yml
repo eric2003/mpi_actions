@@ -17,9 +17,6 @@ on:
 jobs:
   build:
     name: "Windows OneFLOW MPI Run"
-    env:
-      test: "haha test"
-      mypath: ""
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,49 +24,17 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           ls
-          $env:test1 = "cfd"
-          $a1 = [environment]::GetEnvironmentvariable("test1", "User")
-          Write-Host "a1 = $a1"
-          $a2 = [environment]::GetEnvironmentvariable("test2", "User")
-          Write-Host "a2 = $a2"
-          
-          [environment]::SetEnvironmentvariable("test3", "cfd-user", "User")
-          $a3 = [environment]::GetEnvironmentvariable("test3", "User")
-          Write-Host "a3 = $a3"
-          
-          Write-Host "0000000000000000000000000"
-          Write-Host "0: env:test..."
-          Write-Host "0: $env:test..."
-          Write-Host "++++++++++++++++++++++++"
-          Write-Host "0: {{env.test}}..."
-          Write-Host "0: ${{env.test}}..."
-          Write-Host "0000000000000000000000000"
-          $env:test = "aaa"
-          Write-Host "1: $env:test..."
-          $env:test
           $psfile = "${{ github.workspace }}/.github/workflows/install_msmpi.ps1"
           #& $psfile
           powershell $psfile
-          Write-Host "2: $env:test..."
-          $Env:test
-          
-          Write-Host "mypath : $env:mypath"
-          Write-Host "--------------------------------------"
-          Write-Host "env:path : $env:path"
-          Write-Host "--------------------------------------"
         shell: pwsh
       - name: CMake Build
         run: |
           Write-Host "-----------CMake Build---------------------------"
-          $a4 = [environment]::GetEnvironmentvariable("test3", "User")
-          Write-Host "CMake Build a4(cfd-user) = $a4"          
-          Write-Host "mypath : $env:mypath"
-          Write-Host "env:path : $env:path"
-          Write-Host "------------CMake Build--------------------------"
-          Write-Host "CMake Build +++++++++++++++++++++++"
-          Write-Host "CMake Build : env:test..."
-          Write-Host "CMake Build : $env:test..."
-          Write-Host "CMake Build +++++++++++++++++++++++"
+          $a4 = [environment]::GetEnvironmentvariable("path", "User")
+          Write-Host "CMake Build path = $a4" 
+          Write-Host "+++++++++++++++++++++++++++++++++++++++++++++++++++" 
+          Write-Host "CMake Build Env:path = $Env:path" 
           cd ${{ github.workspace }}
           ls
           mkdir build
