@@ -38,7 +38,8 @@ jobs:
           Write-Host "1: $env:test..."
           $env:test
           $psfile = "${{ github.workspace }}/.github/workflows/install_msmpi.ps1"
-          & $psfile
+          #& $psfile
+          powershell $psfile
           Write-Host "2: $env:test..."
           $Env:test
           
