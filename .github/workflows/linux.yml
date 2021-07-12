@@ -34,32 +34,25 @@ jobs:
           echo ----------------------------------------
           echo which mpirun
           which mpirun
-          echo mpirun
-          mpirun
         shell: bash
-      #- name: CMake Build
-      #  run: |
-      #    cd ${{ github.workspace }}
-      #    ls
-      #    mkdir build
-      #    cd build
-      #    cmake --version
-      #    cmake -DCMAKE_INSTALL_PREFIX=${{ github.workspace }} ../
-      #    ls
-      #  shell: pwsh
-      #- name: CMake Install
-      #  env:
-      #    prefix: ${{ github.workspace }}
-      #  run: |
-      #    cd ${{ github.workspace }}/build
-      #    ls
-      #    cmake --build . --target INSTALL --config release
-      #    ls "${{env.prefix}}"
-      #    cd "${{env.prefix}}/bin"
-      #    ls
-      #    $Env:path = [environment]::GetEnvironmentvariable("path", [System.EnvironmentVariableTarget]::Machine)
-      #    $Env:path = $Env:Path + ";${{ github.workspace }}/bin"          
-      #    ./MPIActions.exe
-      #    mpiexec -n 2 MPIActions.exe
-      #    mpiexec -n 64 MPIActions.exe
-      #  shell: pwsh
+      - name: CMake Build
+        run: |
+          cd ${{ github.workspace }}
+          ls
+          mkdir build
+          cd build
+          cmake --version
+          cmake -DCMAKE_INSTALL_PREFIX=${{ github.workspace }} ../
+          ls
+        shell: bash
+      - name: CMake Install
+        env:
+          prefix: ${{ github.workspace }}
+        run: |
+          cd ${{ github.workspace }}/build
+          ls
+          make -j 4
+          make install
+          ls "${{env.prefix}}"
+          cd "${{env.prefix}}/bin"
+        shell: bash
