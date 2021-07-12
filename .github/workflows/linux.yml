@@ -17,10 +17,10 @@ on:
 jobs:
   build:
     name: "Linux OneFLOW MPI Run"
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install MSMPI
+      - name: Install MPICH2
         run: |
           cd ${{ github.workspace }}
           ls
