@@ -34,19 +34,10 @@ else()
 endif()
 message(STATUS "The CMAKE_EXE_LINKER_FLAGS is ${CMAKE_EXE_LINKER_FLAGS}")
 
-set(ARCH "x64")
-set(MPI_DIR "C:/Program Files (x86)/Microsoft SDKs/MPI" )
-set(MPI_LIBRARY_NAME "msmpi" CACHE STRING "name of mpi library")
-set(MPI_HEADER_DIR "${MPI_DIR}/include" CACHE PATH "path to mpi headers")
-set(MPI_LIBRARY_DIR "${MPI_DIR}/lib/${ARCH}" CACHE PATH "path to mpi library")
-
-include_directories(${MPI_HEADER_DIR})  #头文件目录
-link_directories(${MPI_LIBRARY_DIR})    #库目录
-link_libraries(${MPI_LIBRARY_NAME})     #库名称
-
-message(STATUS "MPI_HEADER_DIR is ${MPI_HEADER_DIR}")
-message(STATUS "MPI_LIBRARY_DIR is ${MPI_LIBRARY_DIR}")
-message(STATUS "MPI_LIBRARY_NAME is ${MPI_LIBRARY_NAME}")
+find_package(MPI REQUIRED)
+include_directories ("${MPI_CXX_INCLUDE_DIRS}")
+message(STATUS "The MPI_CXX_INCLUDE_DIRS is ${MPI_CXX_INCLUDE_DIRS}")
+message(STATUS "The MPI_LIBRARIES is ${MPI_LIBRARIES}")
 
 GetAllSubDir( dirList ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -60,6 +51,7 @@ message(STATUS "The executable name is ${EXECUTABLE_TARGET_NAME}.")
 
 #. add an executable to the project using the specified source files and header files:
 add_executable( ${EXECUTABLE_TARGET_NAME} ${SRC_LIST} ${HEAD_LIST} ) 
+target_link_libraries(${EXECUTABLE_TARGET_NAME} ${MPI_LIBRARIES})
 
 install(TARGETS ${EXECUTABLE_TARGET_NAME} RUNTIME DESTINATION bin)
 

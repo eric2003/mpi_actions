@@ -70,7 +70,8 @@ int say_hello( int argc, char ** argv )
 
 int main( int argc, char ** argv )
 {
-	calc_pi( argc, argv );
+	//calc_pi( argc, argv );
+	say_hello( argc, argv );
 
     return 0;
 }
