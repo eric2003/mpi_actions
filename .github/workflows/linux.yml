@@ -24,7 +24,9 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           ls
-          mpirun
+          #mpirun
+          sudo apt install mpich
+          mpirun --version
         shell: bash
       #- name: CMake Build
       #  run: |
