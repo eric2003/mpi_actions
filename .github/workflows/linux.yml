@@ -25,7 +25,7 @@ jobs:
           cd ${{ github.workspace }}
           ls
           mpirun
-        shell: pwsh
+        shell: bath
       #- name: CMake Build
       #  run: |
       #    cd ${{ github.workspace }}
