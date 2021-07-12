@@ -55,4 +55,6 @@ jobs:
           make install
           ls "${{env.prefix}}"
           cd "${{env.prefix}}/bin"
+          ./MPIActions
+          mpirun -n 4 ./MPIActions
         shell: bash
