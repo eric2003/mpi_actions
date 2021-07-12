@@ -26,7 +26,10 @@ jobs:
           ls
           #mpirun
           sudo apt install mpich
+          ls
           mpirun --version
+          mpirun
+          which mpirun
         shell: bash
       #- name: CMake Build
       #  run: |
