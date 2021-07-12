@@ -26,8 +26,8 @@ jobs:
           cd ${{ github.workspace }}
           echo ls
           ls
-          #mpirun
-          #echo sudo apt install mpich
+          echo sudo apt install mpich
+          sudo apt install mpich
           echo ----------------------------------------
           echo mpirun --version
           mpirun --version
