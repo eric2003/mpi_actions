@@ -32,10 +32,10 @@ jobs:
           echo mpirun --version
           mpirun --version
           echo ----------------------------------------
-          echo mpirun
-          mpirun
           echo which mpirun
           which mpirun
+          echo mpirun
+          mpirun
         shell: bash
       #- name: CMake Build
       #  run: |
