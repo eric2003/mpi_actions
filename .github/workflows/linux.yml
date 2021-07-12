@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: OneFLOW_Windows_MPI_CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    name: "Linux OneFLOW MPI Run"
+    runs-on: ubunut-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install MSMPI
+        run: |
+          cd ${{ github.workspace }}
+          ls
+          mpirun
+        shell: pwsh
+      #- name: CMake Build
+      #  run: |
+      #    cd ${{ github.workspace }}
+      #    ls
+      #    mkdir build
+      #    cd build
+      #    cmake --version
+      #    cmake -DCMAKE_INSTALL_PREFIX=${{ github.workspace }} ../
+      #    ls
+      #  shell: pwsh
+      #- name: CMake Install
+      #  env:
+      #    prefix: ${{ github.workspace }}
+      #  run: |
+      #    cd ${{ github.workspace }}/build
+      #    ls
+      #    cmake --build . --target INSTALL --config release
+      #    ls "${{env.prefix}}"
+      #    cd "${{env.prefix}}/bin"
+      #    ls
+      #    $Env:path = [environment]::GetEnvironmentvariable("path", [System.EnvironmentVariableTarget]::Machine)
+      #    $Env:path = $Env:Path + ";${{ github.workspace }}/bin"          
+      #    ./MPIActions.exe
+      #    mpiexec -n 2 MPIActions.exe
+      #    mpiexec -n 64 MPIActions.exe
+      #  shell: pwsh
